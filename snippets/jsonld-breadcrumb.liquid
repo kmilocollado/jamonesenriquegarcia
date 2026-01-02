@@ -1,0 +1,68 @@
+{%- if template contains 'product' -%}
+  {%- assign bc1_text = "Productos" -%}
+  {%- assign bc1_url = "/collections/all" -%}
+  {%- assign bc2_text = product.collections.first.title -%}
+  {%- assign bc2_url  = product.collections.first.url   -%}
+{%- elsif template contains 'collection' and collection.handle -%}
+  {%- assign bc1_text = "Productos" -%}
+  {%- assign bc1_url = "/collections/all" -%}
+  {%- assign bc2_text = collection.title -%}
+  {%- assign bc2_url = collection.url   -%}
+{%- elsif template contains 'article' -%}
+  {%- assign bc1_text = blog.title -%}
+  {%- assign bc1_url = blog.url -%}
+  {%- assign bc2_text = "" -%}
+  {%- assign bc2_url = "" -%}
+{%- else -%}
+  {%- assign bc1_text = "" -%}
+  {%- assign bc1_url = "" -%}
+  {%- assign bc2_text = "" -%}
+  {%- assign bc2_url = "" -%}
+{%- endif -%}
+
+{% assign pos = 1 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": {{ pos }},
+      "name": {{ 'general.breadcrumbs.home' | t | json }},
+      "item": {{ routes.root_url | json }}
+    } {%- assign pos = pos | plus: 1 -%}
+    {%- if bc1_url != blank -%},
+    {
+      "@type": "ListItem",
+      "position": {{ pos }},
+      "name": {{ bc1_text | json }},
+      "item": {{ shop.url | append: bc1_url | json }}
+    } {%- assign pos = pos | plus: 1 -%}
+    {%- endif -%}
+    {%- if bc2_url != blank -%},
+    {
+      "@type": "ListItem",
+      "position": {{ pos }},
+      "name": {{ bc2_text | json }},
+      "item": {{ shop.url | append: bc2_url | json }}
+    } {%- assign pos = pos | plus: 1 -%}
+    {%- endif -%}
+    {%- if template contains 'product' -%},
+    {
+      "@type": "ListItem",
+      "position": {{ pos }},
+      "name": {{ product.title | strip_html | json }},
+      "item": {{ shop.url | append: product.url | json }}
+    }
+    {%- elsif template contains 'article' -%},
+    {
+      "@type":"ListItem",
+      "position": {{ pos }},
+      "name": {{ article.title | strip_html | json }},
+      "item": {{ shop.url | append: article.url | json }}
+    }
+    {%- endif %}
+  ]
+}
+</script>

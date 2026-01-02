@@ -1,0 +1,10 @@
+/* Place any CSS overrides in this file. */
+.collection-header__text-item h2 {
+  font-family: var(--body-font-stack);
+  font-size: var(--base-font-size);
+  line-height: 1.6;
+}
+
+.variant_default--content,.variant_default--intro-content{
+  font-size: 12px;
+}
