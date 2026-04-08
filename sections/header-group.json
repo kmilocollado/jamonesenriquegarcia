@@ -1,1 +1,161 @@
-{"type":"header","name":"Header","sections":{"scrolling_banner_DEAKLQ":{"type":"scrolling-banner","blocks":{"text_irkUHN":{"type":"text","settings":{"text":"<strong>ENVÍOS GRATIS EN PENÍNSULA<\/strong>","font":"body","style":"fill","font_size_desktop":13,"font_size_mobile":12,"use_custom_color":false,"custom_color":"#857040"}},"text_6BD89U":{"type":"text","settings":{"text":"<strong>ENTREGAS 24\/48H<\/strong>","font":"body","style":"fill","font_size_desktop":13,"font_size_mobile":12,"use_custom_color":false,"custom_color":"#857040"}},"text_LkaKHQ":{"type":"text","settings":{"text":"<strong>SERVICIO A EUROPA<\/strong>","font":"body","style":"fill","font_size_desktop":13,"font_size_mobile":12,"use_custom_color":true,"custom_color":"#ffffff"}}},"block_order":["text_irkUHN","text_6BD89U","text_LkaKHQ"],"name":"t:sections.scrolling-banner.name","settings":{"title":"","description":"","show_fade":false,"borders":false,"animation_direction":"normal","animation_speed":60,"section_padding_top":8,"section_padding_bottom":8,"space_between_blocks_desktop":84,"space_between_blocks_mobile":64,"rotate":"0","override_border_radius":false,"color_scheme":"dark"}},"header":{"type":"header","blocks":{"content":{"type":"content","settings":{"mega-menu":"","image_1_aspect_ratio":"square","mega_image_link_1":"","mega_image_subheader_1":"","mega_image_header_1":"","show_promo_1_in_mobile_drawer":true,"overlay_text_on_image_promo_1":true,"overlay_text_color_promo_1":"#ffffff","image_2_aspect_ratio":"square","mega_image_link_2":"","mega_image_subheader_2":"","mega_image_header_2":"","show_promo_2_in_mobile_drawer":true,"overlay_text_on_image_promo_2":true,"overlay_text_color_promo_2":"#ffffff"}},"b9761f95-e4d2-4de1-82e6-ae6f7d56a8f7":{"type":"content","settings":{"mega-menu":"","image_1_aspect_ratio":"square","mega_image_link_1":"","mega_image_subheader_1":"","mega_image_header_1":"","show_promo_1_in_mobile_drawer":true,"overlay_text_on_image_promo_1":true,"overlay_text_color_promo_1":"#ffffff","image_2_aspect_ratio":"square","mega_image_link_2":"","mega_image_subheader_2":"","mega_image_header_2":"","show_promo_2_in_mobile_drawer":true,"overlay_text_on_image_promo_2":true,"overlay_text_color_promo_2":"#ffffff"}}},"block_order":["content","b9761f95-e4d2-4de1-82e6-ae6f7d56a8f7"],"settings":{"sticky_header":true,"overlay_header_homepage":false,"overlay_header_collection":false,"overlay_header_list_collection":false,"overlay_header_contact":false,"logo":"shopify:\/\/shop_images\/LOGOizquda_1_.pdf_3.jpg","overlay_logo":"shopify:\/\/shop_images\/LOGOizquda_1_.pdf_3.jpg","logo-placement":"left","logo_max_width":250,"logo_max_width_mobile":175,"logo_padding":5,"main_linklist":"main-menu","dropdown_alignment":"left","mobile_social_icons":true,"show_currency_selector":false,"show_locale_selector":false,"show_icons":true,"enable_search":true,"cart-style":"shopping-bag","cart_count":true,"show_offers_drawer":false,"offers_drawer_icon":"fire","offers_drawer_icon_color":"#f2bd35","offers_drawer_show_tooltip":false,"offers_drawer_tooltip_test_mode":false,"offers_drawer_tooltip_text":"Don't miss today's offers!","offers_drawer_tooltip_text_color":"#ffffff","offers_drawer_tooltip_background_color":"#f2bd35","overlay_opacity":0}}},"order":["scrolling_banner_DEAKLQ","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "scrolling_banner_DEAKLQ": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "text_irkUHN": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ENVÍOS GRATIS EN PENÍNSULA</strong>",
+            "font": "body",
+            "style": "fill",
+            "font_size_desktop": 13,
+            "font_size_mobile": 12,
+            "use_custom_color": false,
+            "custom_color": "#857040"
+          }
+        },
+        "text_6BD89U": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ENTREGAS 24/48H</strong>",
+            "font": "body",
+            "style": "fill",
+            "font_size_desktop": 13,
+            "font_size_mobile": 12,
+            "use_custom_color": false,
+            "custom_color": "#857040"
+          }
+        },
+        "text_LkaKHQ": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>SERVICIO A EUROPA</strong>",
+            "font": "body",
+            "style": "fill",
+            "font_size_desktop": 13,
+            "font_size_mobile": 12,
+            "use_custom_color": true,
+            "custom_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "text_irkUHN",
+        "text_6BD89U",
+        "text_LkaKHQ"
+      ],
+      "name": "t:sections.scrolling-banner.name",
+      "settings": {
+        "title": "",
+        "description": "",
+        "show_fade": false,
+        "borders": false,
+        "animation_direction": "normal",
+        "animation_speed": 60,
+        "section_padding_top": 8,
+        "section_padding_bottom": 8,
+        "space_between_blocks_desktop": 84,
+        "space_between_blocks_mobile": 64,
+        "rotate": "0",
+        "override_border_radius": false,
+        "color_scheme": "dark"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "content": {
+          "type": "content",
+          "settings": {
+            "mega-menu": "",
+            "image_1_aspect_ratio": "square",
+            "mega_image_link_1": "",
+            "mega_image_subheader_1": "",
+            "mega_image_header_1": "",
+            "show_promo_1_in_mobile_drawer": true,
+            "overlay_text_on_image_promo_1": true,
+            "overlay_text_color_promo_1": "#ffffff",
+            "image_2_aspect_ratio": "square",
+            "mega_image_link_2": "",
+            "mega_image_subheader_2": "",
+            "mega_image_header_2": "",
+            "show_promo_2_in_mobile_drawer": true,
+            "overlay_text_on_image_promo_2": true,
+            "overlay_text_color_promo_2": "#ffffff"
+          }
+        },
+        "b9761f95-e4d2-4de1-82e6-ae6f7d56a8f7": {
+          "type": "content",
+          "settings": {
+            "mega-menu": "",
+            "image_1_aspect_ratio": "square",
+            "mega_image_link_1": "",
+            "mega_image_subheader_1": "",
+            "mega_image_header_1": "",
+            "show_promo_1_in_mobile_drawer": true,
+            "overlay_text_on_image_promo_1": true,
+            "overlay_text_color_promo_1": "#ffffff",
+            "image_2_aspect_ratio": "square",
+            "mega_image_link_2": "",
+            "mega_image_subheader_2": "",
+            "mega_image_header_2": "",
+            "show_promo_2_in_mobile_drawer": true,
+            "overlay_text_on_image_promo_2": true,
+            "overlay_text_color_promo_2": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "content",
+        "b9761f95-e4d2-4de1-82e6-ae6f7d56a8f7"
+      ],
+      "settings": {
+        "sticky_header": true,
+        "overlay_header_homepage": true,
+        "overlay_header_collection": false,
+        "overlay_header_list_collection": false,
+        "overlay_header_contact": false,
+        "logo": "shopify://shop_images/LOGOizquda_1_.pdf_3.jpg",
+        "overlay_logo": "shopify://shop_images/LOGO_1.png",
+        "logo-placement": "left",
+        "logo_max_width": 300,
+        "logo_max_width_mobile": 175,
+        "logo_padding": 5,
+        "main_linklist": "main-menu",
+        "dropdown_alignment": "left",
+        "mobile_social_icons": true,
+        "show_currency_selector": false,
+        "show_locale_selector": false,
+        "show_icons": true,
+        "enable_search": true,
+        "cart-style": "shopping-bag",
+        "cart_count": true,
+        "show_offers_drawer": false,
+        "offers_drawer_icon": "fire",
+        "offers_drawer_icon_color": "#f2bd35",
+        "offers_drawer_show_tooltip": false,
+        "offers_drawer_tooltip_test_mode": false,
+        "offers_drawer_tooltip_text": "Don't miss today's offers!",
+        "offers_drawer_tooltip_text_color": "#ffffff",
+        "offers_drawer_tooltip_background_color": "#f2bd35",
+        "overlay_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "scrolling_banner_DEAKLQ",
+    "header"
+  ]
+}
