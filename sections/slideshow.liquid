@@ -67,9 +67,16 @@
             {% comment %} Caption text size {% endcomment %}
 
             .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 h1,
             .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 p {
               font-size: {{ block.settings.mobile-h1-heading-size }}px;
               line-height: {{ block.settings.mobile-h1-line-height }};
+            }
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 > :first-child {
+              margin-top: 0;
+            }
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 > :last-child {
+              margin-bottom: 0;
             }
             .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title,
             .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title p {
@@ -86,6 +93,7 @@
 
             @media screen and (min-width: 768px) {
               .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 h1,
               .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 p {
                 font-size: {{ block.settings.desktop-h1-heading-size }}px;
                 line-height: {{ block.settings.desktop-h1-line-height }};
@@ -200,9 +208,9 @@
 														<div class="slideshow-title-container" data-animate data-animate-order="{{ 1 | plus: animation_offset }}">
 															<div class="sitewide--title-wrapper slideshow-title">
                                 {% if block.settings.h1_heading != blank %}
-                                  <h1 class="slideshow-h1 rte">
+                                  <div class="slideshow-h1 rte">
                                     {{ block.settings.h1_heading }}
-                                  </h1>
+                                  </div>
                                 {% endif %}
 																{% if block.settings.title != blank %}
                                   <h2 class="homepage-sections--title homepage-section-title rte" id="{{ section.id }}_{{ block.id }}_title">
@@ -658,7 +666,8 @@
         {
           "type": "richtext",
           "id": "h1_heading",
-          "label": "t:sections.image--slideshow.blocks.image.settings.h1_heading.label"
+          "label": "t:sections.image--slideshow.blocks.image.settings.h1_heading.label",
+          "info": "t:sections.image--slideshow.blocks.image.settings.h1_heading.info"
         },
         {
           "type": "richtext",

@@ -1382,7 +1382,8 @@
               "label": "Opacidad de superposición"
             },
             "h1_heading": {
-              "label": "H1"
+              "label": "H1",
+              "info": "Usa un bloque de encabezado (H1) o párrafo. Deja vacío si no lo necesitas."
             },
             "h1_font_size_desktop": {
               "label": "H1 — Tamaño de fuente (escritorio)"

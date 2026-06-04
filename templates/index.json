@@ -15,7 +15,6 @@
         "image_yMFfNd": {
           "type": "image",
           "settings": {
-            "h1_heading": "",
             "title": "<p>VIVE EL </p><p>MUNDIAL</p>",
             "text": "<p>Pasión que </p><p>se comparte</p>",
             "first_button_link": "shopify://collections/packs-ibericos-de-regalo",
@@ -54,9 +53,6 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "h1_heading": "",
-            "title": "",
-            "text": "",
             "first_button_link": "shopify://products/jamon-de-bellota-100-iberico",
             "first_button_label": "",
             "second_button_link": "",
@@ -378,9 +374,7 @@
         "image_cH9ah3": {
           "type": "image",
           "settings": {
-            "h1_heading": "",
             "title": "<p>Enrique García, el legado de un sabor eterno</p>",
-            "text": "",
             "first_button_link": "shopify://pages/herencia-1920",
             "first_button_label": "HERENCIA 1920",
             "second_button_link": "",
