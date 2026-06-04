@@ -1,4 +1,7 @@
 {{ 'section-slideshow.min.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 {% assign animation_offset = 2 %}
 
@@ -72,11 +75,13 @@
             .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title p {
               font-size: {{ block.settings.mobile-caption-heading-size }}px;
               line-height: {{ block.settings.mobile-heading-line-height }};
+              font-family: 'Raleway', sans-serif;
             }
             .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext,
             .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext p {
               font-size: {{ block.settings.mobile-caption-body-text-size }}px;
               line-height: {{ block.settings.mobile-text-line-height }};
+              font-family: 'Bodoni Moda', serif;
             }
 
             @media screen and (min-width: 768px) {
@@ -89,11 +94,13 @@
               .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title p {
                 font-size: {{ block.settings.desktop-caption-heading-size }}px;
                 line-height: {{ block.settings.desktop-heading-line-height }};
+                font-family: 'Raleway', sans-serif;
               }
               .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext,
               .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext p {
                 font-size: {{ block.settings.desktop-caption-body-text-size }}px;
                 line-height: {{ block.settings.desktop-text-line-height }};
+                font-family: 'Bodoni Moda', serif;
               }
             }
           </style>
