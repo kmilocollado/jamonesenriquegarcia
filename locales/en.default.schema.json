@@ -1405,6 +1405,9 @@
               "label": "H1",
               "info": "Use a heading (H1) or paragraph block. Leave empty if not needed."
             },
+            "slide_link": {
+              "info": "Makes the entire slide clickable. Buttons remain clickable above the link."
+            },
             "h1_font_size_desktop": {
               "label": "H1 — Font size (desktop)"
             },

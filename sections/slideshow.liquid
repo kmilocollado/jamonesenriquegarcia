@@ -131,12 +131,17 @@
 								
 
 								{% for block in section.blocks %}
-									{%- assign slide_is_link = false -%}
                   {%- assign animation_order = 1 -%}
-
-									{% if block.settings.first_button_link != blank %}
-											{%- assign slide_is_link = true -%}
-									{% endif %}
+                  {%- liquid
+                    assign slide_link_url = block.settings.slide_link
+                    if slide_link_url == blank and block.settings.first_button_link != blank and block.settings.first_button_label == blank
+                      assign slide_link_url = block.settings.first_button_link
+                    endif
+                    assign slide_is_link = false
+                    if slide_link_url != blank
+                      assign slide_is_link = true
+                    endif
+                  -%}
 
 									<div
 										{{ block.shopify_attributes }} 
@@ -194,12 +199,12 @@
 
 											<div class="slideshow-image-overlay"></div>
 
-											{% if slide_is_link and block.settings.first_button_label == blank %}
-												<a href="{{ block.settings.first_button_link }}" class="slideshow__link"{% if block.settings.second_button_label == blank %}style="z-index:20;"{% endif %} tabindex="-1"></a>
+											{% if slide_is_link %}
+												<a href="{{ slide_link_url }}" class="slideshow__link" tabindex="-1"></a>
 											{% endif %}
 
 											<div 
-												class="homepage-featured-content-box slideshow-mobile-overlay-text{% if section.settings.slide_navigation_style != 'none' and section.blocks.size > 1 %} has-navigation {{ section.settings.slide_navigation_style }}{% unless block.settings.text_position contains 'bottom' %} margin-normal{% endunless %}{% unless block.settings.mobile_text_position contains 'bottom' %} margin-normal-mobile{% endunless %}{% endif %}"
+												class="homepage-featured-content-box slideshow-mobile-overlay-text{% if slide_is_link %} slideshow-slide-has-link{% endif %}{% if section.settings.slide_navigation_style != 'none' and section.blocks.size > 1 %} has-navigation {{ section.settings.slide_navigation_style }}{% unless block.settings.text_position contains 'bottom' %} margin-normal{% endunless %}{% unless block.settings.mobile_text_position contains 'bottom' %} margin-normal-mobile{% endunless %}{% endif %}"
 											>
 												<div 
 													class="homepage-featured-content-box-inner" {% if block.settings.h1_heading != blank and block.settings.title == blank %}style="gap: 0px;"{% endif %}
@@ -351,6 +356,20 @@
 :root {
   --offset-top: 0px;
 }
+
+	.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper .slideshow__link {
+		z-index: 2;
+	}
+
+	.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper .slideshow-slide-has-link {
+		position: relative;
+		z-index: 3;
+	}
+
+	.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper .slideshow-slide-has-link .slide-buttons {
+		position: relative;
+		z-index: 4;
+	}
 	/* Mobile — texto arriba, botón abajo */
 	@media (max-width: 767px) {
 		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box {
@@ -680,6 +699,16 @@
           "id": "text",
           "label": "t:all.Text",
           "default": "<p>Add images and text to give focus to your chosen product, collection, or blog post.</p>"
+        },
+        {
+          "type": "header",
+          "content": "t:all.slide_link"
+        },
+        {
+          "type": "url",
+          "id": "slide_link",
+          "label": "t:all.Link",
+          "info": "t:sections.image--slideshow.blocks.image.settings.slide_link.info"
         },
         {
           "type": "header",
