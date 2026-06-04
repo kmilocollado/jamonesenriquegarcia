@@ -25,36 +25,62 @@
               background-color: color-mix(in srgb, {{ image_overlay_color }}, transparent {{ image_overlay_opacity }}%);
             }
 
-            {% if block.settings.caption-text != 'rgba(0,0,0,0)' %}
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-title,
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-title a,
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .textarea {
+            {% if block.settings.h1_heading_color != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 a {
+                color: rgba({{ block.settings.h1_heading_color.rgba }});
+              }
+            {% elsif block.settings.caption-text != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 a {
                 color: rgba({{ block.settings.caption-text.rgba }});
               }
             {% endif %}
 
-            @media screen and (max-width: 767px) {
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-title,
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-title a,
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .textarea {
+            {% if block.settings.title_color != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title a {
+                color: rgba({{ block.settings.title_color.rgba }});
+              }
+            {% elsif block.settings.caption-text != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title a {
                 color: rgba({{ block.settings.caption-text.rgba }});
               }
-            }
+            {% endif %}
+
+            {% if block.settings.text_color != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .textarea,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .textarea a {
+                color: rgba({{ block.settings.text_color.rgba }});
+              }
+            {% elsif block.settings.caption-text != 'rgba(0,0,0,0)' %}
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .textarea,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .textarea a {
+                color: rgba({{ block.settings.caption-text.rgba }});
+              }
+            {% endif %}
 
             {% comment %} Caption text size {% endcomment %}
 
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 {
+              font-size: {{ block.settings.mobile-h1-heading-size }}px;
+            }
             .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title {
               font-size: {{ block.settings.mobile-caption-heading-size }}px;
             }
-            .slider-section--{{ section.id }} .block-section--{{ block.id }} .featured-row__subtext {
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext {
               font-size: {{ block.settings.mobile-caption-body-text-size }}px;
             }
 
             @media screen and (min-width: 768px) {
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 {
+                font-size: {{ block.settings.desktop-h1-heading-size }}px;
+              }
               .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title {
                 font-size: {{ block.settings.desktop-caption-heading-size }}px;
               }
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .featured-row__subtext {
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext {
                 font-size: {{ block.settings.desktop-caption-body-text-size }}px;
               }
             }
@@ -154,13 +180,15 @@
 														<div class="slideshow-title-container" data-animate data-animate-order="{{ 1 | plus: animation_offset }}">
 															<div class="sitewide--title-wrapper slideshow-title">
                                 {% if block.settings.h1_heading != blank %}
-                                  <h1>
+                                  <h1 class="slideshow-h1 rte">
                                     {{ block.settings.h1_heading }}
                                   </h1>
                                 {% endif %}
-																<h2 class="homepage-sections--title homepage-section-title" id="{{ section.id }}_{{ block.id }}_title">
-																	{{ block.settings.title | newline_to_br }}
-																</h2>
+																{% if block.settings.title != blank %}
+                                  <h2 class="homepage-sections--title homepage-section-title rte" id="{{ section.id }}_{{ block.id }}_title">
+                                    {{ block.settings.title }}
+                                  </h2>
+                                {% endif %}
 															</div>
 														</div>
                             {% assign animation_order = animation_order | plus: 1 %}
@@ -574,21 +602,21 @@
       "name": "t:sections.image--slideshow.blocks.image.name",
       "settings": [
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "h1_heading",
-          "label": "H1 Heading",
+          "label": "H1 Heading"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "title",
           "label": "t:all.Heading",
-          "default": "Make a great \nfirst impression"
+          "default": "<p>Make a great<br>first impression</p>"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "text",
           "label": "t:all.Text",
-          "default": "Add images and text to give focus to your chosen product, collection, or blog post."
+          "default": "<p>Add images and text to give focus to your chosen product, collection, or blog post.</p>"
         },
         {
           "type": "header",
@@ -700,8 +728,18 @@
         },
         {
           "type": "range",
+          "id": "desktop-h1-heading-size",
+          "label": "H1 — t:all.font_size_desktop",
+          "min": 12,
+          "max": 112,
+          "step": 1,
+          "unit": "t:all.px",
+          "default": 48
+        },
+        {
+          "type": "range",
           "id": "desktop-caption-heading-size",
-          "label": "t:all.Heading_size",
+          "label": "t:all.Heading — t:all.font_size_desktop",
           "min": 12,
           "max": 112,
           "step": 1,
@@ -711,7 +749,7 @@
         {
           "type": "range",
           "id": "desktop-caption-body-text-size",
-          "label": "t:all.Body_text_size",
+          "label": "t:all.Text — t:all.font_size_desktop",
           "min": 12,
           "max": 30,
           "step": 1,
@@ -761,8 +799,18 @@
         },
         {
           "type": "range",
+          "id": "mobile-h1-heading-size",
+          "label": "H1 — t:all.font_size_mobile",
+          "min": 12,
+          "max": 112,
+          "step": 1,
+          "unit": "t:all.px",
+          "default": 28
+        },
+        {
+          "type": "range",
           "id": "mobile-caption-heading-size",
-          "label": "t:all.Heading_size",
+          "label": "t:all.Heading — t:all.font_size_mobile",
           "min": 12,
           "max": 112,
           "step": 1,
@@ -772,7 +820,7 @@
         {
           "type": "range",
           "id": "mobile-caption-body-text-size",
-          "label": "t:all.Body_text_size",
+          "label": "t:all.Text — t:all.font_size_mobile",
           "min": 12,
           "max": 20,
           "step": 1,
@@ -785,8 +833,27 @@
         },
         {
           "type": "color",
-          "id": "caption-text",
+          "id": "h1_heading_color",
+          "label": "H1",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "t:all.Heading",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
           "label": "t:all.Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "caption-text",
+          "label": "Color global (respaldo)",
+          "info": "Se aplica si un color individual está vacío.",
           "default": "#ffffff"
         },
         {
@@ -818,15 +885,15 @@
         {
           "type": "image",
           "settings": {
-            "title": "Make a great \nfirst impression",
-            "text": "Add images and text to give focus to your chosen product, collection, or blog post"
+            "title": "<p>Make a great<br>first impression</p>",
+            "text": "<p>Add images and text to give focus to your chosen product, collection, or blog post.</p>"
           }
         },
         {
           "type": "image",
           "settings": {
-            "title": "Promote your \ntop earners",
-            "text": "Showcase key products or collections to maximise your profits"
+            "title": "<p>Promote your<br>top earners</p>",
+            "text": "<p>Showcase key products or collections to maximise your profits</p>"
           }
         }
       ]
