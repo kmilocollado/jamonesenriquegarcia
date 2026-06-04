@@ -1371,6 +1371,34 @@
             },
             "image_overlay_opacity": {
               "label": "Opacidad de superposición"
+            },
+            "h1_heading": {
+              "label": "H1"
+            },
+            "h1_font_size_desktop": {
+              "label": "H1 — Tamaño de fuente (escritorio)"
+            },
+            "h1_font_size_mobile": {
+              "label": "H1 — Tamaño de fuente (móvil)"
+            },
+            "heading_font_size_desktop": {
+              "label": "Encabezado — Tamaño de fuente (escritorio)"
+            },
+            "heading_font_size_mobile": {
+              "label": "Encabezado — Tamaño de fuente (móvil)"
+            },
+            "text_font_size_desktop": {
+              "label": "Texto — Tamaño de fuente (escritorio)"
+            },
+            "text_font_size_mobile": {
+              "label": "Texto — Tamaño de fuente (móvil)"
+            },
+            "mobile_text_position_text_top_button_bottom": {
+              "label": "Texto arriba, botón abajo"
+            },
+            "caption_text_fallback": {
+              "label": "Color global (respaldo)",
+              "info": "Se aplica si un color individual está vacío."
             }
           }
         }
@@ -2846,6 +2874,8 @@
     "outline": "Contorno",
     "font_size_desktop": "Tamaño de fuente (escritorio)",
     "font_size_mobile": "Tamaño de fuente (móvil)",
+    "line_height": "Interlineado",
+    "h1": "H1",
     "height_desktop": "Altura (escritorio)",
     "height_mobile": "Altura (móvil)",
     "section_link": "Enlace de sección",

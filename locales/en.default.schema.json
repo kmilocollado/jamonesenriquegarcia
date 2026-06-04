@@ -1391,6 +1391,34 @@
             },
             "image_overlay_opacity": {
               "label": "Overlay opacity"
+            },
+            "h1_heading": {
+              "label": "H1"
+            },
+            "h1_font_size_desktop": {
+              "label": "H1 — Font size (desktop)"
+            },
+            "h1_font_size_mobile": {
+              "label": "H1 — Font size (mobile)"
+            },
+            "heading_font_size_desktop": {
+              "label": "Heading — Font size (desktop)"
+            },
+            "heading_font_size_mobile": {
+              "label": "Heading — Font size (mobile)"
+            },
+            "text_font_size_desktop": {
+              "label": "Text — Font size (desktop)"
+            },
+            "text_font_size_mobile": {
+              "label": "Text — Font size (mobile)"
+            },
+            "mobile_text_position_text_top_button_bottom": {
+              "label": "Text top, button bottom"
+            },
+            "caption_text_fallback": {
+              "label": "Global color (fallback)",
+              "info": "Used when an individual color is empty."
             }
           }
         }
@@ -2873,6 +2901,8 @@
     "outline": "Outline",
     "font_size_desktop": "Font size (desktop)",
     "font_size_mobile": "Font size (mobile)",
+    "line_height": "Line height",
+    "h1": "H1",
     "height_desktop": "Height (desktop)",
     "height_mobile": "Height (mobile)",
     "section_link": "Section link",

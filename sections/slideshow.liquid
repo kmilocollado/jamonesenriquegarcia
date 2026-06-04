@@ -63,25 +63,37 @@
 
             {% comment %} Caption text size {% endcomment %}
 
-            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 {
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 p {
               font-size: {{ block.settings.mobile-h1-heading-size }}px;
+              line-height: {{ block.settings.mobile-h1-line-height }};
             }
-            .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title {
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title,
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title p {
               font-size: {{ block.settings.mobile-caption-heading-size }}px;
+              line-height: {{ block.settings.mobile-heading-line-height }};
             }
-            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext {
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext,
+            .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext p {
               font-size: {{ block.settings.mobile-caption-body-text-size }}px;
+              line-height: {{ block.settings.mobile-text-line-height }};
             }
 
             @media screen and (min-width: 768px) {
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 {
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-h1 p {
                 font-size: {{ block.settings.desktop-h1-heading-size }}px;
+                line-height: {{ block.settings.desktop-h1-line-height }};
               }
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title {
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} h2.homepage-sections--title p {
                 font-size: {{ block.settings.desktop-caption-heading-size }}px;
+                line-height: {{ block.settings.desktop-heading-line-height }};
               }
-              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext {
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext,
+              .slider-section--{{ section.id }} .block-section--{{ block.id }} .slideshow-text-container .featured-row__subtext p {
                 font-size: {{ block.settings.desktop-caption-body-text-size }}px;
+                line-height: {{ block.settings.desktop-text-line-height }};
               }
             }
           </style>
@@ -132,6 +144,7 @@
 											{% if block.settings.mobile_text_position == 'bottom_left' %}mobile-text-position--bottom-left{% endif %}
 											{% if block.settings.mobile_text_position == 'bottom' %}mobile-text-position--bottom{% endif %}
 											{% if block.settings.mobile_text_position == 'bottom_right' %}mobile-text-position--bottom-right{% endif %}
+											{% if block.settings.mobile_text_position == 'text_top_button_bottom' %}mobile-text-position--text-top-button-bottom{% endif %}
 										"
 									>
 										<div class="swiper-slide--inner{% if section.settings.section_width == 'content' %} block-radius-clip{% endif %}">
@@ -323,6 +336,33 @@
 :root {
   --offset-top: 0px;
 }
+	/* Mobile — texto arriba, botón abajo */
+	@media (max-width: 767px) {
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box {
+			align-self: stretch;
+			justify-self: stretch;
+			width: 100%;
+			height: 100%;
+			max-height: 100%;
+		}
+
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box-inner {
+			height: 100%;
+			min-height: 100%;
+		}
+
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box-inner .slide-buttons {
+			margin-top: auto;
+			justify-content: center;
+		}
+
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box-inner .slideshow-h1,
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box-inner .slideshow-title h2,
+		.slider-section--{{ section.id }} .homepage-sections--slideshow-wrapper.mobile-text-position--text-top-button-bottom .homepage-featured-content-box-inner .featured-row__subtext {
+			text-align: center;
+		}
+	}
+
 	/* Mobile */
 	@media (max-width: 767px) {
 		.slider-section--{{ section.id }} .slideshow--mobile-height-small {
@@ -604,7 +644,7 @@
         {
           "type": "richtext",
           "id": "h1_heading",
-          "label": "H1 Heading"
+          "label": "t:sections.image--slideshow.blocks.image.settings.h1_heading.label"
         },
         {
           "type": "richtext",
@@ -729,32 +769,59 @@
         {
           "type": "range",
           "id": "desktop-h1-heading-size",
-          "label": "H1 — t:all.font_size_desktop",
+          "label": "t:sections.image--slideshow.blocks.image.settings.h1_font_size_desktop.label",
           "min": 12,
-          "max": 112,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 48
         },
         {
           "type": "range",
+          "id": "desktop-h1-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
           "id": "desktop-caption-heading-size",
-          "label": "t:all.Heading — t:all.font_size_desktop",
+          "label": "t:sections.image--slideshow.blocks.image.settings.heading_font_size_desktop.label",
           "min": 12,
-          "max": 112,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 60
         },
         {
           "type": "range",
+          "id": "desktop-heading-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
           "id": "desktop-caption-body-text-size",
-          "label": "t:all.Text — t:all.font_size_desktop",
+          "label": "t:sections.image--slideshow.blocks.image.settings.text_font_size_desktop.label",
           "min": 12,
-          "max": 30,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 24
+        },
+        {
+          "type": "range",
+          "id": "desktop-text-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.5
         },
         {
           "type": "header",
@@ -793,6 +860,10 @@
             {
               "value": "bottom_right",
               "label": "t:all.Bottom_right"
+            },
+            {
+              "value": "text_top_button_bottom",
+              "label": "t:sections.image--slideshow.blocks.image.settings.mobile_text_position_text_top_button_bottom.label"
             }
           ],
           "default": "center_left"
@@ -800,32 +871,59 @@
         {
           "type": "range",
           "id": "mobile-h1-heading-size",
-          "label": "H1 — t:all.font_size_mobile",
+          "label": "t:sections.image--slideshow.blocks.image.settings.h1_font_size_mobile.label",
           "min": 12,
-          "max": 112,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 28
         },
         {
           "type": "range",
+          "id": "mobile-h1-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
           "id": "mobile-caption-heading-size",
-          "label": "t:all.Heading — t:all.font_size_mobile",
+          "label": "t:sections.image--slideshow.blocks.image.settings.heading_font_size_mobile.label",
           "min": 12,
-          "max": 112,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 36
         },
         {
           "type": "range",
+          "id": "mobile-heading-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
           "id": "mobile-caption-body-text-size",
-          "label": "t:all.Text — t:all.font_size_mobile",
+          "label": "t:sections.image--slideshow.blocks.image.settings.text_font_size_mobile.label",
           "min": 12,
-          "max": 20,
+          "max": 100,
           "step": 1,
           "unit": "t:all.px",
           "default": 16
+        },
+        {
+          "type": "range",
+          "id": "mobile-text-line-height",
+          "label": "t:all.line_height",
+          "min": 0.8,
+          "max": 2,
+          "step": 0.1,
+          "default": 1.5
         },
         {
           "type": "header",
@@ -834,7 +932,7 @@
         {
           "type": "color",
           "id": "h1_heading_color",
-          "label": "H1",
+          "label": "t:all.h1",
           "default": "#ffffff"
         },
         {
@@ -852,8 +950,8 @@
         {
           "type": "color",
           "id": "caption-text",
-          "label": "Color global (respaldo)",
-          "info": "Se aplica si un color individual está vacío.",
+          "label": "t:sections.image--slideshow.blocks.image.settings.caption_text_fallback.label",
+          "info": "t:sections.image--slideshow.blocks.image.settings.caption_text_fallback.info",
           "default": "#ffffff"
         },
         {
