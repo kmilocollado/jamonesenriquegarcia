@@ -233,7 +233,7 @@
         "button_layout": "stacked",
         "button_spacing": 37,
         "section-width": "full",
-        "section_padding_top": 100,
+        "section_padding_top": 0,
         "section_padding_bottom": 0,
         "colors": "accent"
       }
@@ -632,8 +632,8 @@
   },
   "order": [
     "slideshow_khRda4",
-    "featured_collection_DP7qgq",
     "template_product_info_columns_iHgaLp",
+    "featured_collection_DP7qgq",
     "image_with_text_aXbaQp",
     "image_with_text_VcQ3Ky",
     "collection_list_BHQ3e3",
