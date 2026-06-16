@@ -21,7 +21,7 @@
 {% endif %}
 
 <div
-  class="wrapper-spacing--v wrapper-spacing--h color-scheme--{{ section.settings.colors }}{% if request.visual_preview_mode %} section-preview{% else %} show-on-scroll{% endif %}{% if section.settings.layout_style == 'slider' %} slider-nav--{{ settings.hover_navigation_desktop }}{% endif %}"
+  class="wrapper-spacing--v wrapper-spacing--h color-scheme--{{ section.settings.colors }} featured-products--{{ section.id }}{% if request.visual_preview_mode %} section-preview{% else %} show-on-scroll{% endif %}{% if section.settings.layout_style == 'slider' %} slider-nav--{{ settings.hover_navigation_desktop }}{% endif %}"
   data-wetheme-section-type="collection--featured-collection" 
   data-wetheme-section-id="{{ section.id }}"
   style="--padding-section-top: {{ section.settings.section_padding_top }}px; --padding-section-bottom: {{ section.settings.section_padding_bottom }}px;"
@@ -61,7 +61,7 @@
       %}
 
       <div 
-        class="grid-uniform product-grid--wrapper{% if section.settings.layout_style == 'slider' %} product-grid--slider-enabled{% endif %}"
+        class="grid-uniform product-grid--wrapper{% if section.settings.layout_style == 'slider' %} product-grid--slider-enabled product-grid--mobile-grid{% endif %}"
         {%- if section.settings.layout_style == 'slider' -%} data-grid-slider-wrapper{%- endif -%}
       >
         {%- if section.settings.layout_style == 'slider' -%}
@@ -90,6 +90,7 @@
 
           <grid-slider 
             class="swiper"
+            data-desktop-only="true"
             data-slides-per-view-desktop="{{ section.settings.grid-desktop }}"
             data-slides-per-view-mobile="{{ section.settings.grid-mobile }}"
             data-product-limit="{{ product_limit }}"
@@ -170,7 +171,7 @@
           </grid-slider>
 
           <!-- pagination -->
-          <div class="swiper-pagination"></div>
+          <div class="swiper-pagination large-hide"></div>
 
           <!-- scrollbar -->
           <div class="swiper-scrollbar large-hide"></div>
@@ -204,6 +205,28 @@
     </div>
   </div>
 </div>
+
+{% style %}
+  @media (max-width: 767px) {
+    .featured-products--{{ section.id }} .product-grid--mobile-grid grid-slider:not(.swiper-initialized) .swiper-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: calc(var(--grid-spacing) * 0.75);
+      row-gap: 2em;
+      transform: none !important;
+    }
+
+    .featured-products--{{ section.id }} .product-grid--mobile-grid grid-slider:not(.swiper-initialized) .swiper-slide {
+      flex-shrink: 0;
+      margin-right: 0 !important;
+      height: auto !important;
+    }
+
+    .featured-products--{{ section.id }} .product-grid--mobile-grid grid-slider:not(.swiper-initialized) .grid__item.small--one-whole.swiper-slide {
+      width: 100% !important;
+    }
+  }
+{% endstyle %}
 
 {% schema %}
 {

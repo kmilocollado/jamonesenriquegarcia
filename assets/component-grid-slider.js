@@ -9564,6 +9564,7 @@ function EffectCards(_ref) {
 class GridSlider extends HTMLElement {
   constructor() {
     super();
+    this.handleResize = this.handleResize.bind(this);
     this._updatePropertiesFromDataset();
   }
 
@@ -9571,6 +9572,21 @@ class GridSlider extends HTMLElement {
     this._initSlidesPerView();
     this._attachEventListeners();
     this.init();
+
+    if (this.desktopOnly) {
+      window.addEventListener('resize', this.handleResize);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.desktopOnly) {
+      window.removeEventListener('resize', this.handleResize);
+    }
+
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+      this.swiperInstance = null;
+    }
   }
 
   _updatePropertiesFromDataset() {
@@ -9579,6 +9595,27 @@ class GridSlider extends HTMLElement {
     this.slidesPerViewTablet = Math.min(this.slidesPerViewDesktop, 3);
     this.slidesPerViewMobile = parseInt(this.dataset.slidesPerViewMobile, 10) || 2;
     this.productsToShow = parseInt(this.dataset.productLimit, 10) || 4;
+    this.desktopOnly = this.getAttribute('data-desktop-only') === 'true';
+  }
+
+  get isMobile() {
+    return window.matchMedia('only screen and (max-width: 767px)').matches;
+  }
+
+  get disableSwiper() {
+    return this.desktopOnly && this.isMobile;
+  }
+
+  handleResize() {
+    const gridSliderWrapper = this.closest('[data-grid-slider-wrapper]');
+
+    if (this.disableSwiper && this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+      this.swiperInstance = null;
+      gridSliderWrapper?.classList.remove('swiper-initialized');
+    } else if (!this.disableSwiper && !this.swiperInstance) {
+      this.init();
+    }
   }
 
   _attachEventListeners() {
@@ -9589,7 +9626,9 @@ class GridSlider extends HTMLElement {
         this._initSlidesPerView();
         if (this.swiperInstance) {
           this.swiperInstance.destroy(true, true);
+          this.swiperInstance = null;
         }
+        this.closest('[data-grid-slider-wrapper]')?.classList.remove('swiper-initialized');
         this.init();
       });
     });
@@ -9598,7 +9637,9 @@ class GridSlider extends HTMLElement {
       window.addEventListener('resize', () => {
         if (this.swiperInstance) {
           this.swiperInstance.destroy(true, true);
+          this.swiperInstance = null;
         }
+        this.closest('[data-grid-slider-wrapper]')?.classList.remove('swiper-initialized');
         this.init();
       });
     }
@@ -9613,6 +9654,8 @@ class GridSlider extends HTMLElement {
   }
 
   init() {
+    if (this.disableSwiper) return;
+
     const gridSliderWrapper = this.closest('[data-grid-slider-wrapper]');
     const scrollbarElement = gridSliderWrapper?.querySelector('.swiper-scrollbar');
     const nextEl = gridSliderWrapper?.querySelector('.swiper-button--next');
