@@ -9575,9 +9575,9 @@ class GridSlider extends HTMLElement {
 
   _updatePropertiesFromDataset() {
     this.slideCount = this.querySelectorAll('.swiper-slide').length;
-    this.slidesPerViewDesktop = parseInt(this.dataset.slidesPerViewDesktop, 10) + 0.5 || 4.5;
-    this.slidesPerViewTablet = 3.5;
-    this.slidesPerViewMobile = parseInt(this.dataset.slidesPerViewMobile, 10) || 2.5;
+    this.slidesPerViewDesktop = parseInt(this.dataset.slidesPerViewDesktop, 10) || 4;
+    this.slidesPerViewTablet = Math.min(this.slidesPerViewDesktop, 3);
+    this.slidesPerViewMobile = parseInt(this.dataset.slidesPerViewMobile, 10) || 2;
     this.productsToShow = parseInt(this.dataset.productLimit, 10) || 4;
   }
 
@@ -9605,8 +9605,6 @@ class GridSlider extends HTMLElement {
   }
 
   _initSlidesPerView() {
-    this.slidesPerViewMobile == 1 ? this.slidesPerViewMobile = this.slidesPerViewMobile + 0.08 : this.slidesPerViewMobile = this.slidesPerViewMobile - 1 + 0.5;
-
     // If the number of slides is less than the number of slides per view, set slides per view to auto
     // If the slides per view is greater than the number of products to show, set slides per view to auto
     if (this.slideCount <= this.slidesPerViewMobile || this.slidesPerViewMobile >= this.productsToShow) this.slidesPerViewMobile = 'auto';
