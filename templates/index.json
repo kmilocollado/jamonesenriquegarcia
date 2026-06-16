@@ -188,7 +188,7 @@
       "type": "featured-collection",
       "name": "t:sections.collection--featured-collection.presets.name",
       "settings": {
-        "title": "Los más vendidos",
+        "title": "<strong>Los más vendidos</strong>",
         "description": "",
         "collection": "best-sellers",
         "override_button_colors": false,
