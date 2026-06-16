@@ -233,7 +233,7 @@
         "button_layout": "stacked",
         "button_spacing": 37,
         "section-width": "full",
-        "section_padding_top": 50,
+        "section_padding_top": 100,
         "section_padding_bottom": 0,
         "colors": "accent"
       }
