@@ -1869,6 +1869,13 @@
         "columns_per_row": {
           "label": "Columnas por fila"
         },
+        "mobile_layout_style": {
+          "label": "Estilo en móvil"
+        },
+        "mobile_columns_per_row": {
+          "label": "Columnas por fila (móvil)",
+          "info": "Solo aplica cuando el estilo en móvil es Cuadrícula."
+        },
         "slider_navigation_style": {
           "label": "Estilo de navegación deslizante"
         },

@@ -11,20 +11,32 @@
     }
   }
 
-  .section-{{ section.id }} .info-cols--title {
-    font-size: {{ section.settings.info_title_font_size }}px;
-    font-weight: {{ section.settings.info_title_font_weight }};
-    margin-top: {{ section.settings.info_title_margin_top }}px;
-  }
+  @media (max-width: 767px) {
+    {% if section.settings.mobile_layout_style == 'grid' %}
+      .section-{{ section.id }}.info-cols--mobile-grid .info-cols--slider:not(.swiper-initialized) .swiper-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: calc(var(--grid-spacing) * 0.75);
+        row-gap: var(--grid-spacing);
+        transform: none !important;
+      }
 
-  .section-{{ section.id }} .info-cols--slider {
-    text-align: {{ section.settings.text_alignment_mobile }};
-  }
+      .section-{{ section.id }}.info-cols--mobile-grid .info-cols--slider:not(.swiper-initialized) .swiper-slide {
+        flex-shrink: 0;
+        margin-right: 0 !important;
+        height: auto !important;
+      }
 
-  @media (min-width: 768px) {
-    .section-{{ section.id }} .info-cols--slider {
-      text-align: {{ section.settings.text_alignment }};
-    }
+      {% if section.settings.mobile_columns_per_row == '2' %}
+        .section-{{ section.id }}.info-cols--mobile-grid .info-cols--slider:not(.swiper-initialized) .swiper-slide {
+          width: calc(50% - calc(var(--grid-spacing) * 0.75) / 2);
+        }
+      {% else %}
+        .section-{{ section.id }}.info-cols--mobile-grid .info-cols--slider:not(.swiper-initialized) .swiper-slide {
+          width: 100%;
+        }
+      {% endif %}
+    {% endif %}
   }
 {% endstyle %}
 
@@ -52,10 +64,12 @@
 <script src="{{ 'component-info-columns.js' | asset_url }}" defer type="module" data-flow-load-key="info-columns"></script>
 
 <info-columns
-	class="wrapper-spacing--v wrapper-spacing--h color-scheme--{{ section.settings.colors }} info-cols section-{{ section.id }}{% if request.visual_preview_mode %} section-preview{% else %} show-on-scroll{% endif %}"
+	class="wrapper-spacing--v wrapper-spacing--h color-scheme--{{ section.settings.colors }} info-cols section-{{ section.id }}{% if section.settings.mobile_layout_style == 'grid' %} info-cols--mobile-grid{% endif %}{% if request.visual_preview_mode %} section-preview{% else %} show-on-scroll{% endif %}"
   data-wetheme-section-type="template--product--info-columns"
 	data-wetheme-section-id="{{ section.id }}"
 	data-slides-per-row="{{ section.settings.columns_per_row }}"
+  data-mobile-grid="{% if section.settings.mobile_layout_style == 'grid' %}true{% else %}false{% endif %}"
+  data-mobile-columns-per-row="{{ section.settings.mobile_columns_per_row }}"
   data-grid-spacing="{{ settings.grid_spacing }}"
   style="--padding-section-top: {{ section.settings.section_padding_top }}px; --padding-section-bottom: {{ section.settings.section_padding_bottom }}px;"
 >
@@ -261,7 +275,9 @@
 				{% endfor %}
 			</div>
 
-			{% if section.blocks.size > 1 %}
+			{% if section.blocks.size > 1 and section.settings.mobile_layout_style != 'grid' %}
+				<div class="swiper-pagination large-hide"></div>
+			{% elsif section.blocks.size > 1 %}
 				<div class="swiper-pagination"></div>
 			{% endif %}
 
@@ -462,6 +478,39 @@
         }
       ],
       "default": "center"
+    },
+    {
+      "type": "radio",
+      "id": "mobile_layout_style",
+      "label": "t:sections.template--product--info-columns.settings.mobile_layout_style.label",
+      "options": [
+        {
+          "value": "slider",
+          "label": "t:all.Slider"
+        },
+        {
+          "value": "grid",
+          "label": "t:all.Grid"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "radio",
+      "id": "mobile_columns_per_row",
+      "label": "t:sections.template--product--info-columns.settings.mobile_columns_per_row.label",
+      "info": "t:sections.template--product--info-columns.settings.mobile_columns_per_row.info",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:all.1"
+        },
+        {
+          "value": "2",
+          "label": "t:all.2"
+        }
+      ],
+      "default": "1"
     },
     {
       "type": "header",

@@ -1893,6 +1893,13 @@
         "columns_per_row": {
           "label": "Columns per row"
         },
+        "mobile_layout_style": {
+          "label": "Mobile style"
+        },
+        "mobile_columns_per_row": {
+          "label": "Columns per row (mobile)",
+          "info": "Only applies when mobile style is Grid."
+        },
         "slider_navigation_style": {
           "label": "Slider navigation style"
         },
