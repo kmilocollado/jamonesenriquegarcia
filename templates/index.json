@@ -632,6 +632,19 @@
         "section_padding_bottom": 60,
         "colors": "white"
       }
+    },
+    "custom_liquid_hX4RVW": {
+      "type": "custom-liquid",
+      "name": "t:sections.advanced-layout--custom-liquid.name",
+      "settings": {
+        "title": "Valoraciones de nuestros clientes",
+        "description": "",
+        "custom_liquid": "<!-- Begin eTrusted widget tag -->\n<etrusted-widget data-etrusted-widget-id=\"wdg-f109e88c-988b-4b29-a9c0-87e67e8daabe\"></etrusted-widget>\n<!-- End eTrusted widget tag -->",
+        "section_width": "content",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "colors": "white"
+      }
     }
   },
   "order": [
@@ -644,6 +657,7 @@
     "video_hero_XeHqhk",
     "template_product_info_columns_MJ4jcd",
     "slideshow_dhh3Jy",
-    "accordion_LaFRmV"
+    "accordion_LaFRmV",
+    "custom_liquid_hX4RVW"
   ]
 }
